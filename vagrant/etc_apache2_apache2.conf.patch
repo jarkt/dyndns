@@ -1,0 +1,4 @@
+153c153
+< AccessFileName .htaccess
+---
+> AccessFileName .htaccess.local

@@ -1,0 +1,22 @@
+rm -rf /vagrant/app/cache/config/ && rm -rf /vagrant/app/cache/content/ && rm -rf /vagrant/app/cache/templates/
+./console.php esUpdateIndexTemplates
+./console.php esUpdateSearchTemplates
+./console.php esUpdateIndexTemplates && ./console.php esUpdateSearchTemplates
+./console.php esSeed suggest-1 && ./console.php esSeed fsg-1
+./console.php cleanupDatabase
+./console.php createStaticFiles
+./mongodb.php odm:generate:hydrators && ./mongodb.php odm:generate:proxies
+./mongodb.php odm:schema:create
+mongorestore --drop -d devdb dump/devdb/
+mongorestore --drop -d devdb dump/fsg_default/
+cctrlapp fsg/default addon.creds
+cctrlapp fsg/default deploy
+cctrlapp fsg/default run "/srv/www/code/console.php cleanupDatabase"
+cctrlapp fsg/default log error
+cctrlapp fsg/default log deploy
+cctrlapp fsg/default log worker
+cctrlapp fsg/stage deploy
+cctrlapp fsg/stage run "/srv/www/code/console.php cleanupDatabase"
+cctrlapp fsg/stage log error
+cctrlapp fsg/stage log deploy
+cctrlapp fsg/stage log worker

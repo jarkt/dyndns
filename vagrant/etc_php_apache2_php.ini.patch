@@ -1,0 +1,45 @@
+226c226
+< short_open_tag = On
+---
+> short_open_tag = Off
+521c521
+< error_reporting = E_ALL & ~E_DEPRECATED
+---
+> error_reporting = E_ALL | E_STRICT
+538c538
+< display_errors = Off
+---
+> display_errors = On
+549c549
+< display_startup_errors = Off
+---
+> display_startup_errors = On
+593c593
+< track_errors = Off
+---
+> track_errors = On
+611c611
+< html_errors = Off
+---
+> html_errors = On
+951a952,953
+> extension=mongo.so
+> extension=/usr/local/lib/php-memcached/modules/memcached.so
+960c962
+< ;date.timezone =
+---
+> date.timezone = "Europe/Berlin"
+1870a1873,1884
+> 
+> [XDebug]
+> xdebug.remote_enable=true
+> xdebug.remote_host=127.0.0.1
+> xdebug.remote_port=9000
+> xdebug.remote_handler=dbgp
+> xdebug.profiler_enable=0
+> xdebug.profiler_enable_trigger=1
+> xdebug.profiler_output_dir="/vagrant/XDEBUG_PROFILE"
+> 
+> [memcached]
+> memcached.use_sasl=1
+\ No newline at end of file
