@@ -1,6 +1,0 @@
-16,17c16,17
-< export APACHE_RUN_USER=www-data
-< export APACHE_RUN_GROUP=www-data
----
-> export APACHE_RUN_USER=vagrant
-> export APACHE_RUN_GROUP=vagrant

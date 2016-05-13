@@ -1,8 +1,0 @@
-16a17,23
-> # Setup elasticsearch:
-> /vagrant/console.php esUpdateIndexTemplates >/dev/null 2>&1
-> /vagrant/console.php esUpdateSearchTemplates >/dev/null 2>&1
-> 
-> # Trigger workers:
-> (/bin/sleep 60 && nohup /vagrant/console.php trigger >/dev/null 2>&1)
-> 
